@@ -1,13 +1,9 @@
 Done
-- repo file structure
-- database setup
-- entities codes
-- controllers
+-Fully functional Web application
 
 In progress
-- other backend setup
+-Mobile app
 
 TO DO
-- UI for web
-- UI for mobile
-- Mobile backend
+-Connecting backend to mobile
+-Mobile UI
