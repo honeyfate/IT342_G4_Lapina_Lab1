@@ -4,86 +4,264 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #f5f5f5;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f1e8;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(210, 180, 140, 0.08) 0%, transparent 20%),
+    radial-gradient(circle at 90% 80%, rgba(139, 69, 19, 0.08) 0%, transparent 20%);
+  font-family: 'Georgia', 'Times New Roman', serif;
+  position: relative;
+}
+
+.login-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(45deg, transparent 48%, rgba(210, 180, 140, 0.03) 48%, rgba(210, 180, 140, 0.03) 52%, transparent 52%),
+    linear-gradient(-45deg, transparent 48%, rgba(210, 180, 140, 0.03) 48%, rgba(210, 180, 140, 0.03) 52%, transparent 52%);
+  background-size: 40px 40px;
+  pointer-events: none;
 }
 
 /* Form Styling */
 .login-form {
-  background: white;
-  padding: 2.5rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  background: #fffaf0;
+  padding: 2.8rem 2.5rem;
+  border-radius: 14px;
+  box-shadow: 
+    0 10px 30px rgba(139, 69, 19, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
   width: 100%;
-  max-width: 380px;
+  max-width: 400px;
+  border: 1px solid #d2b48c;
+  position: relative;
+  z-index: 1;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+}
+
+.login-form:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 15px 40px rgba(139, 69, 19, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* Decorative corner accents */
+.login-form::before,
+.login-form::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #8b4513;
+  opacity: 0.5;
+}
+
+.login-form::before {
+  top: 12px;
+  left: 12px;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.login-form::after {
+  bottom: 12px;
+  right: 12px;
+  border-left: 0;
+  border-top: 0;
 }
 
 h2 {
   text-align: center;
-  margin-bottom: 1.5rem;
-  color: #333;
+  margin-bottom: 2.2rem;
+  color: #5d4037;
+  font-family: 'Georgia', serif;
+  font-weight: 700;
+  font-size: 2.2rem;
+  letter-spacing: 0.5px;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+h2::after {
+  content: '✻';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #d2691e;
+  font-size: 1.2rem;
 }
 
 /* Input Fields */
 input {
   width: 100%;
-  padding: 12px;
-  margin-bottom: 15px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-sizing: border-box; /* Prevents input from overflowing */
-  font-size: 14px;
+  padding: 15px 18px;
+  margin-bottom: 20px;
+  border: 2px solid #e6d3b8;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 16px;
+  background-color: #fdfaf6;
+  color: #5d4037;
+  transition: all 0.3s ease;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 input:focus {
   outline: none;
-  border-color: #007bff;
+  border-color: #8b4513;
+  box-shadow: 
+    0 0 0 3px rgba(139, 69, 19, 0.15),
+    inset 0 2px 4px rgba(0, 0, 0, 0.05);
+  background-color: #fff;
+}
+
+input::placeholder {
+  color: #a1887f;
+  font-style: italic;
 }
 
 /* Button Styles */
 button {
   width: 100%;
-  padding: 12px;
-  border-radius: 5px;
+  padding: 16px;
+  border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
   border: none;
   transition: all 0.3s ease;
-  font-size: 14px;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+button:focus:not(:active)::after {
+  animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0.5;
+  }
+  20% {
+    transform: scale(25, 25);
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(40, 40);
+  }
 }
 
 .btn-primary {
-  background-color: #007bff;
-  color: white;
+  background: linear-gradient(135deg, #8b4513 0%, #a0522d 100%);
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(139, 69, 19, 0.3);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 }
 
 .btn-primary:hover {
-  background-color: #0056b3;
+  background: linear-gradient(135deg, #7a3a10 0%, #904923 100%);
+  box-shadow: 0 8px 25px rgba(139, 69, 19, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+  box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
 }
 
 .btn-secondary {
-  background-color: white;
-  color: #007bff;
-  border: 1px solid #007bff;
-  margin-top: 10px;
+  background-color: #fffaf0;
+  color: #8b4513;
+  border: 2px solid #8b4513;
+  margin-top: 15px;
+  box-shadow: 0 4px 10px rgba(139, 69, 19, 0.1);
 }
 
 .btn-secondary:hover {
-  background-color: #f0f7ff;
+  background-color: #f5f1e8;
+  color: #654321;
+  border-color: #654321;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(139, 69, 19, 0.2);
+}
+
+.btn-secondary:active {
+  transform: translateY(1px);
 }
 
 /* UI Elements */
 .divider {
   text-align: center;
-  margin: 20px 0;
-  border-bottom: 1px solid #eee;
-  line-height: 0.1em;
+  margin: 28px 0;
+  position: relative;
+}
+
+.divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #d2b48c, transparent);
 }
 
 .divider span {
-  background: #fff;
-  padding: 0 10px;
-  color: #888;
-  font-size: 12px;
+  background: #fffaf0;
+  padding: 0 18px;
+  color: #a0522d;
+  font-size: 14px;
   text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Optional: Add a subtle branding element */
+.login-brand {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  color: #8b4513;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  font-style: italic;
+  letter-spacing: 1px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .login-form {
+    padding: 2rem 1.5rem;
+    margin: 1rem;
+    border-radius: 12px;
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+  }
 }
